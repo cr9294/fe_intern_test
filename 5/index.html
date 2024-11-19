@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Question 5</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <script src='index.js'></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Data Visualization</title>
+  <!-- 引入 Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body></body>
+<body>
+  <!-- 温度趋势图 -->
+  <div class="chart-container" style="width: auto; height: 300px; margin: 30px;">
+    <h3>temperatureChart</h3>
+    <canvas id="temperatureChart"></canvas>
+  </div>
+  <!-- 天气分布图 -->
+  <div class="chart-container" style="width: auto; height: 300px; margin: 30px">
+    <h3>weatherChart</h3>
+    <canvas id="weatherChart"></canvas>
+  </div>
+  <script src="index.js"></script>
+</body>
 </html>

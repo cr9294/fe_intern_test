@@ -1,5 +1,10 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import Table from './components/Table.vue';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+// 注册 Table 组件
+app.component('Table', Table);
+
+app.mount('#app');
