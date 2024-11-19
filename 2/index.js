@@ -13,36 +13,50 @@
  * @param {any} data 请求内容
  */
 async function post(api, data) {
-  try {
-    // 发起 POST 请求
-    const response = await fetch(api, {
-      method: 'POST', // 使用 POST 方法
-      headers: {
-        'Content-Type': 'application/json', // 请求头设置为 JSON 格式
-      },
-      body: JSON.stringify(data), // 请求体将数据转换为 JSON 字符串
-    });
+    try {
+        // 发起 POST 请求
+        const response = await fetch(api, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-    // 检查 HTTP 响应状态码是否为 2xx 以外的值
-    if (!response.ok) {
-      const errorResponse = await response.json(); // 如果不是 2xx，解析响应体中的错误信息
-      throw new Error(errorResponse.message || `HTTP 错误！状态码: ${response.status}`); // 抛出错误
+        // 如果响应状态码不是 2xx 范围内，抛出异常
+        if (!response.ok) {
+            // 可以根据需求进一步处理不同的 HTTP 状态码
+            const errorData = await response.text(); // 使用 text() 而不是 json() 以防返回非 JSON 格式
+            throw new Error(`HTTP Error: ${response.status} - ${errorData || 'Unknown error'}`);
+        }
+
+        // 检查响应是否为空，如果为空，直接返回空对象或者抛出异常
+        const responseText = await response.text();
+        if (!responseText) {
+            throw new Error('Empty response body');
+        }
+
+        // 解析返回的 JSON 数据
+        const responseData = JSON.parse(responseText);
+
+        // 根据 code 判断是否成功，成功返回 data，否则抛出错误
+        if (responseData.code === 200) {
+            return responseData.data;
+        } else {
+            throw new Error(`API Error: ${responseData.message || 'Unknown error'}`);
+        }
+    } catch (error) {
+        // 处理请求过程中可能出现的错误
+        console.error('Request failed:', error);
+        throw new Error(`Request failed: ${error.message}`);
     }
-
-    // 解析成功的响应内容
-    const result = await response.json();
-
-    // 如果服务端返回的 code 是 200，则表示成功，返回数据部分
-    if (result.code === 200) {
-      return result.data;
-    } else {
-      // 如果 code 不是 200，说明发生了业务错误，抛出错误信息
-      throw new Error(`错误: ${result.message}`);
-    }
-  } catch (error) {
-    // 捕获请求过程中可能出现的网络错误、超时等异常
-    console.error('请求失败:', error.message);
-    throw error; // 将错误重新抛出，方便调用者处理
-  }
 }
+
+post('https://example.com/apihttps://example.com/api', { key: 'value' })
+    .then(data => {
+        console.log('Request succeeded with data:', data);
+    })
+    .catch(error => {
+        console.error('Request failed with error:', error.message);
+    });
 

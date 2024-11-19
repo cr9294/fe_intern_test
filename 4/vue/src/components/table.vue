@@ -102,19 +102,78 @@ export default {
 </script>
 
 <style scoped>
+div {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  margin-right: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: #4597f5;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
+
 th {
+  background-color: #60aaf8;
+  color: #fff;
+  padding: 12px 16px;
+  font-size: 16px;
+  text-align: left;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-select {
-  margin-bottom: 10px;
+
+th:hover {
+  background-color: #0056b3;
+}
+
+td {
+  padding: 12px 16px;
+  border-top: 1px solid #f1f1f1;
+  font-size: 14px;
+  color: #555;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+table tbody tr {
+  transition: background-color 0.3s ease;
 }
 </style>
+

@@ -7,16 +7,34 @@
   <title>Weather Data Visualization</title>
   <!-- 引入 Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>/* 图表容器 */
+  .chart-container {
+    width: auto;        /* 容器宽度自动，根据内容调整 */
+    height: 300px;      /* 容器高度固定为300px */
+    margin: 30px;       /* 容器四周的外边距为30px */
+
+    /* 可选：添加背景色和边框圆角提升视觉效果 */
+    background-color: #f4f4f4; /* 设置浅灰色背景，提升对比度 */
+    border-radius: 8px; /* 圆角边框，增强视觉美感 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影，增加深度感 */
+
+    /* Flexbox布局，方便对齐容器内的内容 */
+    display: flex;
+    justify-content: center; /* 水平居中对齐 */
+    align-items: center;     /* 垂直居中对齐 */
+
+    /* 可选：容器内边距，确保内容不贴边 */
+    padding: 20px;
+  }
+  </style>
 </head>
 <body>
   <!-- 温度趋势图 -->
-  <div class="chart-container" style="width: auto; height: 300px; margin: 30px;">
-    <h3>temperatureChart</h3>
+  <div class="chart-container">
     <canvas id="temperatureChart"></canvas>
   </div>
   <!-- 天气分布图 -->
-  <div class="chart-container" style="width: auto; height: 300px; margin: 30px">
-    <h3>weatherChart</h3>
+  <div class="chart-container">
     <canvas id="weatherChart"></canvas>
   </div>
   <script src="index.js"></script>
