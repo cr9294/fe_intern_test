@@ -54,10 +54,10 @@ function compareString(a1, a2) {
 
 // 使用不同的比较函数进行排序
 const comparators = {
-  compareA: compareNumber,   // A部分按数字比较
-  compareB: compareString,   // B部分按字典序比较
-  compareC: compareNumber,   // C部分按数字比较
-  compareD: compareNumber,   // D部分按数字比较
+  compareA: compareNumber,
+  compareB: compareString,
+  compareC: compareNumber,
+  compareD: compareNumber,
 };
 
 // 测试数据
