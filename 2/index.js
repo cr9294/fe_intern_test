@@ -52,11 +52,5 @@ async function post(api, data) {
     }
 }
 
-post('https://example.com/apihttps://example.com/api', { key: 'value' })
-    .then(data => {
-        console.log('Request succeeded with data:', data);
-    })
-    .catch(error => {
-        console.error('Request failed with error:', error.message);
-    });
-
+// 使用 module.exports 导出 post 函数
+module.exports = { post };
